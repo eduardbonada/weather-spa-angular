@@ -1,11 +1,15 @@
 // CONTROLLERS
-weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
+weatherApp.controller('homeController', ['$scope', '$location', 'cityService', function($scope, $location, cityService) {
 
 	$scope.city = cityService.city;
 
 	$scope.$watch('city', function() {
 		cityService.city = $scope.city; // update the service when the value changes (since bound to input text field)
 	});
+
+	$scope.submitCity = function(){
+		$location.path('/forecast');
+	};
 
 }]);
 
